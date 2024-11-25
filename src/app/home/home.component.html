@@ -1,0 +1,17 @@
+<p>home works!</p>
+<div class="Interpolation">{{VAR1}}</div>
+<div class="Property binding"><a [href]="VAR2">Lien</a></div>
+<div class="Property binding"><img height=100px [src]="VAR3" alt="angular picture"></div>
+<div class="Event binding"><button (click)="function1()">Click!</button></div>
+<div class="Two way data binding"><input type="text" [(ngModel)]="VAR4"></div>
+<div class="Interpolation">VAR4::{{VAR4}}</div>
+<div *ngIf="VAR1 else template">
+<h6>hiii</h6>
+</div>
+<ng-template #template>
+    byeee
+</ng-template>
+
+<ul *ngFor="let item of List , let i=index">
+    <li>{{i}} : {{item}}</li>
+</ul>
