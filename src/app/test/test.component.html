@@ -1,0 +1,12 @@
+<form [formGroup]="addFormUser">
+    <label for="">username:</label>
+    <input type="text" formControlName="username">
+    <span style="color: red;" *ngIf="addFormUser.get('username')?.errors?.['minlength'] && addFormUser.get('username')?.touched ">  le nom doit contenir au moins 3 caractéres!</span>
+    <span style="color: red;" *ngIf="addFormUser.get('username')?.errors?.['required'] && addFormUser.get('username')?.touched "> le nom est obligatoire!</span>
+    
+    <input type="text" formControlName="email">
+    <span style="color: red;" *ngIf="addFormUser.get('email')?.invalid && addFormUser.get('email')?.touched ">format d'email invalide</span>
+    
+    <button type="submit" (click)="addUser()">Ajouter</button>
+    </form>
+    

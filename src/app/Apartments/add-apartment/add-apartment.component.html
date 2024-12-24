@@ -1,1 +1,92 @@
-<p>add-apartment works!</p>
+<div class="container p-4 border rounded bg-light">
+    <h2 class="text-center mb-4">Ajouter un appartement</h2>
+    <form [formGroup]="apartForm" (ngSubmit)="onAdd()" class="container p-4 border rounded bg-light">
+      <div class="row mb-3">
+        <label for="apartNum" class="col-sm-3 col-form-label">Numéro d'Appartement:</label>
+        <div class="col-sm-9">
+          <input type="text" id="apartNum" class="form-control" formControlName="apartNum" />
+  
+          </div>
+        </div>
+  
+  
+      <div class="row mb-3">
+        <label for="floorNum" class="col-sm-3 col-form-label">Numéro d'Etage:</label>
+        <div class="col-sm-9">
+          <input type="text" id="floorNum" class="form-control" formControlName="floorNum" />
+  
+        </div>
+      </div>
+  
+      <div class="row mb-3">
+        <label for="surface" class="col-sm-3 col-form-label">Surface:</label>
+        <div class="col-sm-9">
+          <input type="text" id="surface" class="form-control" formControlName="surface" />
+          <div *ngIf="apartForm.get('surface')?.invalid && apartForm.get('surface')?.touched" class="text-danger mt-1">
+            <small>Surface est obligatoire.</small>
+          </div>
+        </div>
+      </div>
+  
+      <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Terrace:</label>
+        <div class="col-sm-9">
+          <div class="form-check">
+            <input type="radio" id="terraceYes" value="yes" formControlName="terrace" class="form-check-input" />
+            <label for="terraceYes" class="form-check-label">Yes</label>
+          </div>
+          <div class="form-check">
+            <input type="radio" id="terraceNo" value="no" formControlName="terrace" class="form-check-input" />
+            <label for="terraceNo" class="form-check-label">No</label>
+          </div>
+        </div>
+      </div>
+  
+      <div class="row mb-3">
+        <label for="surfaceTerrace" class="col-sm-3 col-form-label">Surface Terrace:</label>
+        <div class="col-sm-9">
+          <input type="text" id="surfaceTerrace" class="form-control" formControlName="surfaceTerrace"
+          />
+  
+        </div>
+      </div>
+  
+  
+      <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Catégorie:</label>
+        <div class="col-sm-9">
+          <div class="form-check">
+            <input type="radio" id="categoryS1" value="S+1" formControlName="category" class="form-check-input" />
+            <label for="categoryS1" class="form-check-label">S+1</label>
+          </div>
+          <div class="form-check">
+            <input type="radio" id="categoryS2" value="S+2" formControlName="category" class="form-check-input" />
+            <label for="categoryS2" class="form-check-label">S+2</label>
+          </div>
+          <div class="form-check">
+            <input type="radio" id="categoryS3" value="S+3" formControlName="category" class="form-check-input" />
+            <label for="categoryS3" class="form-check-label">S+3</label>
+          </div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="residence" class="form-label">Résidence:</label>
+        <select id="residence" class="form-select" formControlName="residence">
+          <option *ngFor="let residence of residences" [value]="residence.id">
+            {{ residence.name }}
+          </option>
+        </select>
+        <div *ngIf="apartForm.get('residence')?.invalid && apartForm.get('residence')?.touched" class="text-danger">
+          <small>Residence est obligatoire.</small>
+        </div>
+      </div>
+  
+  
+      <div class="row">
+        <div class="col text-center">
+          <button type="submit" class="btn btn-primary me-2" [disabled]="apartForm.invalid">Ajouter</button>
+          <button type="button" class="btn btn-secondary">Réinitialiser</button>
+        </div>
+      </div>
+    </form>
+  </div>

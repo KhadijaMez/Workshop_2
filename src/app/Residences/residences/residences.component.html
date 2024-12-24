@@ -1,70 +1,4 @@
-<!-- <div *ngFor="let residence of listResidences">
-    <h2>{{ residence.name }}</h2>
-    <img [src]="residence.image" alt="{{ residence.name }}" width="200">
-    <p>Status: 
-      <span *ngIf="residence.status === 'Disponible'" style="color: green;">Disponible</span>
-      <span *ngIf="residence.status === 'En Construction'" style="color: orange;">En Construction</span>
-      <span *ngIf="residence.status === 'Vendu'" style="color: red;">Vendu</span>
-    </p>
-    <button (click)="showLocation(residence)">Show Location</button>
-    <button (click)="likeResidence(residence)">Like</button>
-</div> -->
-
-
-<!-- <input
-  type="text"
-  [(ngModel)]="searchAddress"
-  (input)="filterResidences()"
-  placeholder="Rechercher par adresse"
-  style="margin-bottom: 20px; padding: 8px; width: 300px; align-content: center"
->
-
-<div *ngFor="let residence of filteredResidences">
-  <h2>{{ residence.name }}</h2>
-  <img [src]="residence.image" alt="{{ residence.name }}" width="200">
-  <p>Status: 
-    <span *ngIf="residence.status === 'Disponible'" style="color: green;">Disponible</span>
-    <span *ngIf="residence.status === 'En Construction'" style="color: orange;">En Construction</span>
-    <span *ngIf="residence.status === 'Vendu'" style="color: red;">Vendu</span>
-  </p>
-  <button (click)="showLocation(residence)">Show Location</button>
-  <button (click)="likeResidence(residence)">Like</button>
-  <hr>
-</div>
-<div *ngIf="filteredResidences.length === 0">
-    <p>Aucune résidence ne correspond à la recherche.</p>
-</div>
- <button (click)="showFavorites()" style="margin-top: 20px;">Voir Favoris (Console)</button> --
-
-<button (click)="toggleFavorites()" style="margin-top: 20px;">
-    {{ showFavoritesList ? 'Masquer Favoris' : 'Afficher Favoris' }}
-  </button>
-<div *ngIf="showFavoritesList" style="margin-top: 20px; border: 1px solid;color: burlywood; padding: 15px;">
-    <h3>Favoris</h3>
-    <div *ngFor="let favorite of favorites">
-      <h4>{{ favorite.name }}</h4>
-      <img [src]="favorite.image" alt="{{ favorite.name }}" width="100">
-      <p>{{ favorite.address }}</p>
-      <p>Status: {{ favorite.status }}</p>
-      <button (click)="removeFavorite(favorite)" style="color: red;">Supprimer</button>
-      <hr>
-    </div>
-    <div *ngIf="favorites.length === 0">
-      <p>Aucun favori ajouté pour le moment.</p>
-    </div>
-  </div> -->
-  
-
-  <!-- <div *ngFor="let residence of listResidences; let i=index">
-    <h3>{{residence.name}}</h3>
-    <p>Status : {{residence.status}}</p>
-    <button (click)="showAddress(residence)">ShowLocation</button> 
-    <div *ngIf="visibilty">{{residence.address}}</div>
-
-  </div> -->
-
-  <h1 class="text-center my-4">List of Residences</h1>
-
+  <h1 class="text-center my-4">Liste de Residences</h1>
 
 <div class="container">
 
@@ -76,21 +10,23 @@
 
     <img [src]="residence.image" class="card-img-top img-fluid" alt="{{residence.name}} image" style="height: 200px; object-fit: cover;">
 
-    < class="card-body">
+    <div class="card-body">
 
      <h5 class="card-title">{{ residence.name }}</h5>
-     <p class="card-text"><small class="text-muted">Status: </small></p>
+     <p class="card-text"><small class="text-muted">Status: {{residence.status}}</small></p>
 
-    <div [ngSwitch]="residence.status">
-        <li *ngSwitchCase="'Disponible'" style="color: green;">Disponible</li>
-        <li *ngSwitchCase="'Vendu'" style="color: red;">Vendu</li>
-        <li *ngSwitchCase="'En Construction'" style="color: orange;">En construction</li>
-    </div>
+    <!-- <div [ngSwitch]="residence.status">
+        <li *ngSwitchCase="Disponible" style="color: green;">Disponible</li>
+        <li *ngSwitchCase="Vendu" style="color: red;">Vendu</li>
+        <li *ngSwitchCase="En Construction" style="color: orange;">En construction</li>
+    </div>  -->
     
-
-     <div> <button (click)="showAddress(residence)" class="btn btn-primary">Show Location</button>
+     <div> <button (click)="showAddress(residence)" class="btn btn-primary">Voir Location</button>
 
      <span *ngIf="visibilty && residence.name===nameR "> {{residence.address}}</span>
+    </div>
+     <button class="btn btn-danger">J'aime</button>
+     <button class="btn btn-success"  [routerLink]="['/residences/details/',residence.id]">Voir Details</button>
     </div>
 
     </div>
@@ -99,6 +35,5 @@
 
   </div>
 
- </div>
 
   
